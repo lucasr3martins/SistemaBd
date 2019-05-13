@@ -30,7 +30,7 @@ public class ProdutoTableModel extends AbstractTableModel {
             case 0:
                 return produto.getNome();
                 case 1:
-                return produto.getQdtE();
+                return produto.getQuantidade();
             default:
                 throw new IndexOutOfBoundsException("Coluna inexistente!");
         }

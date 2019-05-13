@@ -11,10 +11,10 @@ public class ProdutoDAO implements IDAO<Produto> {
     @Override
     public void inserir(Produto produto) throws Exception {
         Conexao c = new Conexao();
-        String sql = "INSERT INTO PRODUTO (NOME, QDTE) VALUES (?, ?, 0)";
+        String sql = "INSERT INTO PRODUTO (NOME, QUANTIDADE) VALUES (?, ?)";
         PreparedStatement ps = c.getConexao().prepareStatement(sql);
         ps.setString(1, produto.getNome());
-        ps.setString(2, produto.getQdtE());
+        ps.setString(2, produto.getQuantidade());
         ps.execute();
         c.confirmar();
     }
@@ -22,10 +22,10 @@ public class ProdutoDAO implements IDAO<Produto> {
     @Override
     public void alterar(Produto produto) throws Exception {
         Conexao c = new Conexao();
-        String sql = "UPDATE PRODUTO SET NOME=?, QDTE=? WHERE CODIGO=?";
+        String sql = "UPDATE PRODUTO SET NOME=?, QUANTIDADE=? WHERE CODIGO=?";
         PreparedStatement ps = c.getConexao().prepareStatement(sql);
         ps.setString(1, produto.getNome());
-        ps.setString(2, produto.getQdtE());
+        ps.setString(2, produto.getQuantidade());
         ps.setInt(3, produto.getCodigo());
         ps.execute();
         c.confirmar();
@@ -53,7 +53,7 @@ public class ProdutoDAO implements IDAO<Produto> {
             Produto produto = new Produto();
             produto.setCodigo(rs.getInt("CODIGO"));
             produto.setNome(rs.getString("NOME"));
-            produto.setQdtE(rs.getString("QDTE"));
+            produto.setQuantidade(rs.getString("QUANTIDADE"));
             listaProdutos.add(produto);
         }
 
@@ -72,7 +72,7 @@ public class ProdutoDAO implements IDAO<Produto> {
         if (rs.next()) {
             produto.setCodigo(rs.getInt("CODIGO"));
             produto.setNome(rs.getString("NOME"));
-            produto.setQdtE(rs.getString("QDTE"));
+            produto.setQuantidade(rs.getString("QUANTIDADE"));
         }
 
         return produto;

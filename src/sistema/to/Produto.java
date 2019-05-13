@@ -5,18 +5,18 @@ public class Produto {
 
     private int codigo;
     private String nome;
-    private String qtde;
+    private String quantidade;
 
     public Produto() {
         this.codigo = 0;
         this.nome = "";
-        this.qtde = "";
+        this.quantidade = "";
     }
 
     public Produto(int codProduto) {
         this.codigo = codProduto;
         this.nome = "";
-        this.qtde = "";
+        this.quantidade = "";
     }
 
     public int getCodigo() {
@@ -35,12 +35,12 @@ public class Produto {
         this.nome = nome;
     }
     
-        public String getQdtE() {
-        return qtde;
+        public String getQuantidade() {
+        return quantidade;
     }
 
-    public void setQdtE(String qtde) {
-        this.qtde = qtde;
+    public void setQuantidade(String quantidade) {
+        this.quantidade = quantidade;
     }
 
    
@@ -59,9 +59,5 @@ public class Produto {
             }
         }
         return false;
-    }
-
-    public void setQuantidadeEstoque(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

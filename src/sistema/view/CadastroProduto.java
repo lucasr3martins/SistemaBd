@@ -32,7 +32,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         lbNome = new javax.swing.JLabel();
         lbPrecoCompra = new javax.swing.JLabel();
         ftfNome = new javax.swing.JFormattedTextField();
-        ftfQuantidadeEstoque = new javax.swing.JFormattedTextField();
+        ftfQuantidade = new javax.swing.JFormattedTextField();
         spGrade = new javax.swing.JScrollPane();
         tbGrade = new javax.swing.JTable();
 
@@ -119,7 +119,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
 
         lbNome.setText("Nome do produto:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(lbNome, gridBagConstraints);
 
@@ -127,29 +127,31 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(lbPrecoCompra, gridBagConstraints);
 
-        ftfNome.setColumns(25);
+        ftfNome.setColumns(20);
+        ftfNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftfNomeActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(ftfNome, gridBagConstraints);
 
-        ftfQuantidadeEstoque.setColumns(10);
-        ftfQuantidadeEstoque.setValue(new Double(0));
-        ftfQuantidadeEstoque.addActionListener(new java.awt.event.ActionListener() {
+        ftfQuantidade.setColumns(5);
+        ftfQuantidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ftfQuantidadeEstoqueActionPerformed(evt);
+                ftfQuantidadeActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(ftfQuantidadeEstoque, gridBagConstraints);
+        pnForm.add(ftfQuantidade, gridBagConstraints);
 
         pnConteudo.add(pnForm, java.awt.BorderLayout.PAGE_START);
 
@@ -178,7 +180,8 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         if (validarFormulario()) {
             produto.setNome(ftfNome.getText().trim());
-            produto.setQdtE(ftfQuantidadeEstoque.getText().trim());
+            produto.setQuantidade(ftfQuantidade.getText().trim());
+            
 
             if (produto.getCodigo() == 0) {
                 try {
@@ -226,15 +229,19 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
             produto = tm.getRowValue(tbGrade.getRowSorter().convertRowIndexToModel(tbGrade.getSelectedRow()));
 
             ftfNome.setValue(produto.getNome());
-            ftfQuantidadeEstoque.setValue(produto.getQdtE());
+            ftfQuantidade.setValue(produto.getQuantidade());
 
             habilitarFormulario(true);
         }
     }//GEN-LAST:event_tbGradeMouseClicked
 
-    private void ftfQuantidadeEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfQuantidadeEstoqueActionPerformed
+    private void ftfQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfQuantidadeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ftfQuantidadeEstoqueActionPerformed
+    }//GEN-LAST:event_ftfQuantidadeActionPerformed
+
+    private void ftfNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftfNomeActionPerformed
 
     private void habilitarFormulario(boolean ativo) {
         btNovo.setEnabled(!ativo);
@@ -242,7 +249,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
         btExcluir.setEnabled(ativo);
         btCancelar.setEnabled(ativo);
         ftfNome.setEnabled(ativo);
-        ftfQuantidadeEstoque.setEnabled(ativo);
+        ftfQuantidade.setEnabled(ativo);
         tbGrade.setEnabled(!ativo);
 
         if (!ativo) {
@@ -254,7 +261,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private void limpaFormulario() {
         produto = null;
         ftfNome.setValue("");
-        ftfQuantidadeEstoque.setValue(new Double(0));
+        ftfQuantidade.setValue("");
     }
 
     private boolean validarFormulario() {
@@ -284,7 +291,7 @@ public class CadastroProduto extends javax.swing.JInternalFrame {
     private javax.swing.JButton btNovo;
     private javax.swing.JButton btSalvar;
     private javax.swing.JFormattedTextField ftfNome;
-    private javax.swing.JFormattedTextField ftfQuantidadeEstoque;
+    private javax.swing.JFormattedTextField ftfQuantidade;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbPrecoCompra;
     private javax.swing.JPanel pnBarraFerramentas;
