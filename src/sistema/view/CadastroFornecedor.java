@@ -176,7 +176,11 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
                 ftfCnpjActionPerformed(evt);
             }
         });
-        pnForm.add(ftfCnpj, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        pnForm.add(ftfCnpj, gridBagConstraints);
 
         pnConteudo.add(pnForm, java.awt.BorderLayout.PAGE_START);
 

@@ -35,7 +35,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         lbTelefone = new javax.swing.JLabel();
         ftfCpf = new javax.swing.JFormattedTextField();
         ftfTelefone = new javax.swing.JFormattedTextField();
-        jLabel1 = new javax.swing.JLabel();
         spGrade = new javax.swing.JScrollPane();
         tbGrade = new javax.swing.JTable();
 
@@ -133,7 +132,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftfCpf.setText("   .   .   -  ");
         ftfCpf.setValue(new String());
         ftfCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,9 +151,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Ex: (00)00000-0000");
-
         javax.swing.GroupLayout pnFormLayout = new javax.swing.GroupLayout(pnForm);
         pnForm.setLayout(pnFormLayout);
         pnFormLayout.setHorizontalGroup(
@@ -169,13 +164,10 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ftfNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnFormLayout.createSequentialGroup()
-                        .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(ftfTelefone, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ftfCpf, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1)))
-                .addContainerGap(312, Short.MAX_VALUE))
+                    .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(ftfTelefone, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ftfCpf, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
         pnFormLayout.setVerticalGroup(
             pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,8 +183,7 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTelefone)
-                    .addComponent(ftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ftfTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
@@ -346,7 +337,6 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField ftfCpf;
     private javax.swing.JFormattedTextField ftfNome;
     private javax.swing.JFormattedTextField ftfTelefone;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbCpf;
     private javax.swing.JLabel lbNome;
     private javax.swing.JLabel lbTelefone;
