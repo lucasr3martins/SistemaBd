@@ -32,10 +32,10 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
         pnForm = new javax.swing.JPanel();
         lbNome = new javax.swing.JLabel();
         lbCnpj = new javax.swing.JLabel();
+        lbTelefone = new javax.swing.JLabel();
+        ftfTelefone = new javax.swing.JFormattedTextField();
         ftfNome = new javax.swing.JFormattedTextField();
         ftfCnpj = new javax.swing.JFormattedTextField();
-        lbCnpj1 = new javax.swing.JLabel();
-        ftfTelefone = new javax.swing.JFormattedTextField();
         spGrade = new javax.swing.JScrollPane();
         tbGrade = new javax.swing.JTable();
 
@@ -122,55 +122,61 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
 
         lbNome.setText("Nome:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.ABOVE_BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(lbNome, gridBagConstraints);
 
         lbCnpj.setText("CNPJ:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
         gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
         pnForm.add(lbCnpj, gridBagConstraints);
 
-        ftfNome.setColumns(25);
+        lbTelefone.setText("Telefone:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(ftfNome, gridBagConstraints);
-
-        ftfCnpj.setColumns(13);
-        try {
-            ftfCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        ftfCnpj.setValue(new String());
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(2, 2, 2, 2);
-        pnForm.add(ftfCnpj, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        pnForm.add(lbTelefone, gridBagConstraints);
 
-        lbCnpj1.setText("Telefone:");
-        pnForm.add(lbCnpj1, new java.awt.GridBagConstraints());
-
-        ftfTelefone.setColumns(11);
+        ftfTelefone.setColumns(14);
         try {
             ftfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        ftfTelefone.setText("(  )     -    ");
-        ftfTelefone.setValue(new String());
         ftfTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftfTelefoneActionPerformed(evt);
             }
         });
-        pnForm.add(ftfTelefone, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BASELINE_LEADING;
+        pnForm.add(ftfTelefone, gridBagConstraints);
+
+        ftfNome.setColumns(30);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        pnForm.add(ftfNome, gridBagConstraints);
+
+        ftfCnpj.setColumns(20);
+        try {
+            ftfCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##.###.###/####-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        ftfCnpj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ftfCnpjActionPerformed(evt);
+            }
+        });
+        pnForm.add(ftfCnpj, new java.awt.GridBagConstraints());
 
         pnConteudo.add(pnForm, java.awt.BorderLayout.PAGE_START);
 
@@ -199,8 +205,8 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         if (validarFormulario()) {
             fornecedor.setNome(ftfNome.getText().trim());
-            fornecedor.setCnpj((String) ftfCnpj.getValue());
-            fornecedor.setTelefone((String) ftfTelefone.getValue());
+            fornecedor.setCnpj(ftfCnpj.getText().trim());
+            fornecedor.setTelefone(ftfTelefone.getText().trim());
 
             if (fornecedor.getCodigo() == 0) {
                 try {
@@ -242,10 +248,6 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
         habilitarFormulario(false);
     }//GEN-LAST:event_btCancelarActionPerformed
 
-    private void ftfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfTelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ftfTelefoneActionPerformed
-
     private void tbGradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGradeMouseClicked
         if (evt.getClickCount() == 2) {
             FornecedorTableModel tm = (FornecedorTableModel) tbGrade.getModel();
@@ -258,6 +260,14 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
             habilitarFormulario(true);
         }
     }//GEN-LAST:event_tbGradeMouseClicked
+
+    private void ftfTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfTelefoneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftfTelefoneActionPerformed
+
+    private void ftfCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ftfCnpjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ftfCnpjActionPerformed
 
     private void habilitarFormulario(boolean ativo) {
         btNovo.setEnabled(!ativo);
@@ -286,11 +296,7 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Nome inválido.", "Alerta", JOptionPane.WARNING_MESSAGE);
             ftfNome.requestFocus();
             return false;
-        }
-        if (ftfCnpj.getText().trim().length() != 18) {
-            JOptionPane.showMessageDialog(this, "CNPJ inválido.", "Alerta", JOptionPane.WARNING_MESSAGE);
-            ftfCnpj.requestFocus();
-            return false;
+       
         }
         return true;
     }
@@ -313,8 +319,8 @@ public class CadastroFornecedor extends javax.swing.JInternalFrame {
     private javax.swing.JFormattedTextField ftfNome;
     private javax.swing.JFormattedTextField ftfTelefone;
     private javax.swing.JLabel lbCnpj;
-    private javax.swing.JLabel lbCnpj1;
     private javax.swing.JLabel lbNome;
+    private javax.swing.JLabel lbTelefone;
     private javax.swing.JPanel pnBarraFerramentas;
     private javax.swing.JPanel pnConteudo;
     private javax.swing.JPanel pnForm;

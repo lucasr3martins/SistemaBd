@@ -141,7 +141,12 @@ public class CadastroCliente extends javax.swing.JInternalFrame {
             }
         });
 
-        ftfTelefone.setColumns(13);
+        ftfTelefone.setColumns(14);
+        try {
+            ftfTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##)#####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         ftfTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ftfTelefoneActionPerformed(evt);
